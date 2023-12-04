@@ -1,0 +1,6 @@
+-sname jobpq
+
+-setcookie jobpq_cookie
+
++K true
++A30
