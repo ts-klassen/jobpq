@@ -26,10 +26,23 @@ start_link() ->
 %%                  type => worker(),       % optional
 %%                  modules => modules()}   % optional
 init([]) ->
-    SupFlags = #{strategy => one_for_all,
-                 intensity => 0,
+    SupFlags = #{strategy => one_for_one,
+                 intensity => 2,
                  period => 1},
-    ChildSpecs = [],
+    ChildSpecs = [
+        #{
+            id => jobpq_notification_sup
+          , start => {jobpq_notification, start_link, []}
+          , restart => permanent
+          , type => worker
+        }
+      , #{
+            id => jobpq_priority_queue_sup
+          , start => {jobpq_priority_queue, start_link, []}
+          , restart => permanent
+          , type => worker
+        }
+    ],
     {ok, {SupFlags, ChildSpecs}}.
 
 %% internal functions
