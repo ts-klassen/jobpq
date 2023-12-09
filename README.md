@@ -56,5 +56,5 @@ Spec
 ```
 -spec queue_unassigned(scope(), task(), priority()) -> ok.
 -spec wait_for_assignment(scope()) -> task().
--spec assign(scope()) -> none | {value, task()}.
+-spec assign(scope()) -> klsn:maybe(task()).
 ```

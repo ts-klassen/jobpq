@@ -33,7 +33,7 @@ await_(Scope, none) ->
     jobpq_notification:await(Scope),
     await_(Scope, assign(Scope)).
 
--spec assign(scope()) -> none | {value, task()}.
+-spec assign(scope()) -> klsn:maybe(task()).
 assign(Scope) ->
     jobpq_priority_queue:out(Scope).
 

@@ -1,4 +1,8 @@
-[{<<"pqueue">>,
+[{<<"klsn">>,
+  {git,"https://github.com/ts-klassen/klsn.git",
+       {ref,"d66599df41b737386ecae4af1648005017e96c70"}},
+  0},
+ {<<"pqueue">>,
   {git,"https://github.com/okeuday/pqueue.git",
        {ref,"b917c968f918aefe744a9c5c75dbd37f464a1cba"}},
   0}].
