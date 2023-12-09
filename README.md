@@ -3,6 +3,8 @@ jobpq
 
 An OTP application
 
+job priority queue
+
 Build
 -----
 
@@ -49,6 +51,13 @@ Type
 -type scope() :: term().
 -type task() :: term().
 -type priority() :: integer().
+```
+
+klsn
+----
+`klsn:maybe/1`
+```
+-type maybe(Value) :: {value, Value} | none.
 ```
 
 Spec
