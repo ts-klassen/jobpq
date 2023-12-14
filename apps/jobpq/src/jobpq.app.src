@@ -5,6 +5,8 @@
   {mod, {jobpq_app, []}},
   {applications,
    [kernel,
+    klsn,
+    pqueue,
     stdlib
    ]},
   {env,[]},
