@@ -17,7 +17,7 @@ send(Name, Data) ->
     Pids = pg:get_members(?MODULE, Name),
     lists:foreach(fun(Pid)->
         Pid ! {?MODULE, Name, Data}
-    end, Pids).
+    end, lists:reverse(Pids)).
 
 await(Name) ->
     receive
