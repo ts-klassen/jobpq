@@ -4,6 +4,7 @@
         queue_unassigned/3
       , wait_for_assignment/1
       , assign/1
+      , remaining/1
     ]).
 
 
@@ -37,3 +38,6 @@ await_(Scope, none) ->
 assign(Scope) ->
     jobpq_priority_queue:out(Scope).
 
+-spec remaining(scope()) -> non_neg_integer().
+remaining(Scope) ->
+    jobpq_priority_queue:len(Scope).

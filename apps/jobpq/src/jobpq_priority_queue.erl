@@ -9,6 +9,7 @@
       , handle_cast/2
       , in/3
       , out/1
+      , len/1
     ]).
 
 in(Name, Data, Priority) ->
@@ -16,6 +17,9 @@ in(Name, Data, Priority) ->
 
 out(Name) ->
     gen_server:call(?MODULE, {out, Name}).
+
+len(Name) ->
+    gen_server:call(?MODULE, {len, Name}).
 
 start_link() ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
@@ -40,6 +44,15 @@ handle_call({out, Name}, _from, State0) ->
             {reply, Res, State};
         _ ->
             {reply, none, State0}
+    end;
+
+handle_call({len, Name}, _from, State0) ->
+    case State0 of
+        #{Name:=PQueue0} ->
+            Len = pqueue2:len(PQueue0),
+            {reply, Len, State0};
+        _ ->
+            {reply, 0, State0}
     end;
 
 handle_call({in, Name, Data, Priority}, _From, State0) ->
